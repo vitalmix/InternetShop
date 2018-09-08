@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" uri="http://www.springframework.org/tags/form"
+      prefix="springForm">
+<head>
+
+    <meta charset="utf-8">
+    <title>Регистрация</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://s3.amazonaws.com/fdcore-gms/2/default/images/favicon.ico">
+    <link rel="icon" type="image/png" href="https://s3.amazonaws.com/fdcore-gms/2/default/images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="https://s3.amazonaws.com/fdcore-gms/2/default/images/favicon-16x16.png" sizes="16x16" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Регистрация" />
+
+    <link href="https://s3.amazonaws.com/fdcore-gms/2/default/css/style.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="http://yastatic.net/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://yastatic.net/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.13/vue.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue-validator/1.4.4/vue-validator.min.js"></script>
+
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+
+
+</head>
+
+<body>
+
+<div class="container">
+    <!--/*@thymesVar id="exist" type="com"*/-->
+
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1 class="text-center">Регистрация</h1>
+            <div class="panel">
+                <div class="panel-body">
+
+
+
+
+                    <form action="#" th:action="@{/register}" th:object="${user}" method="POST" id="register_form">
+
+                        <input type="hidden" name="ci_csrf_token" value="" />
+
+                        <div class="form-group" >
+                            <label class="control-label" for="login_5b0d28917840a">Логин</label>
+                            <input th:field="*{login}" title='auth_login' type    ='text' id='login_5b0d28917840a' value='' name='login' class='form-control' v-model="login" />
+
+                            <div class="text text-danger" th:if="${#fields.hasErrors('login')}"
+                                 th:text="${'invalid login'}"></div>
+
+                        </div>
+
+
+
+
+
+                        <div class="form-group">
+                            <label class="control-label" for="password_5b0d28917849a">Пароль</label>
+                            <input th:field="*{password}" title='auth_password' type='password' maxlength='30' id='password_5b0d28917849a' value='' name='password' class='form-control' v-model="password" />
+                            <div class="text text-danger" th:if="${#fields.hasErrors('password')}"
+                                 th:text="${'invail password'}"></div>
+                        </div>
+
+                        <div class="form-group" >
+
+                            <label class="control-label" for="password_5b0d28917849a">Повторите пароль</label>
+                            <input th:field="*{password2}" title='auth_password' type='password' maxlength='30'  value='' name='password' class='form-control' v-model="password" />
+
+
+                            <div class="text text-danger" th:if="${#fields.hasErrors('password2')}"
+                                 th:text="${'Passwords do not match'}"></div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="email_5b0d28917850f">Email</label>
+
+                            <input th:field="*{email}" title='auth_email_full' type='email' id='email_5b0d28917850f' value='' name='email' class='form-control' v-model="email" />
+                            <div class="text text-danger" th:if="${#fields.hasErrors('email')}"
+                                 th:text="${'invalid email'}"></div>
+                        </div>
+
+
+                <div class="form-actions">
+                    <input type="submit" id="gms_register_button" class="btn btn-success btn-lg btn-block"  value="Создать аккаунт" style="text-transform: none;" />
+
+
+                </div>
+
+                </form>
+
+
+
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+<style></style>
+
+
+</body>
+</html>
